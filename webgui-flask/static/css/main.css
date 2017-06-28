@@ -1,0 +1,32 @@
+.item .caption{
+    color:white;
+    font-family: Segoe UI;
+    text-align: center;
+
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%); 
+    margin:0!important;
+}
+
+.breadcrumb li{
+    font-size: 1.8em !important;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a:active {
+    text-decoration: none;
+}

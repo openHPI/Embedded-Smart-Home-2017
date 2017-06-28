@@ -1,0 +1,57 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}{{ context.title }}{% endblock %}
+
+
+{% block scripts %}
+    {{ super() }}
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+{% endblock %}
+
+
+{% block styles %}
+    {{ super() }}
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/main.css') }}">
+{% endblock %}
+
+
+{% block navbar %}
+    <ol class="breadcrumb">
+        {% for site in context.super_sites %}
+            <li><a href="{{ site[0] }}">{{ site[1] }}</a></li>
+        {% endfor %}
+        <li class="active">{{ context.active_site }}</li>
+    </ol>
+{% endblock %}
+
+{% block content %}
+    {{ super() }}
+
+    <div class="container-fluid dynamicTile">
+        {% for tilerow in tilerows %}
+            <div class="row">
+                {% for tile in tilerow %}
+                <div class="{{ tile.columnclass()|safe }}" style="padding:5px">
+                        <div id="{{ tile.id()|safe }}" class="tile" style="{{ tile.style()|safe }}">
+                            <a href="{{ tile.link }}">
+                                <div class="carousel slide" data-ride="carousel">
+                                    <div class="carousel-inner">
+                                        <div class="item active">
+                                                {{ tile.active_item().html()|safe }}
+                                        </div>
+
+                                        {% for tileitem in tile.non_active_items() %}
+                                            <div class="item">
+                                                {{ tileitem.html()|safe }}
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
