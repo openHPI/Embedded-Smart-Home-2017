@@ -52,3 +52,6 @@ def light():
     manager = TileManager(tiles)
     context = PageContext("Smarthome Projekt", "Licht", [["/", "Home"]])
     return render_template("main.html", tilerows=manager, context=context)
+
+if __name__ == "__main__":
+    app.run(debug=True)
