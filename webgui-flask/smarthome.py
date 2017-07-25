@@ -4,6 +4,9 @@ from flask_bootstrap import Bootstrap
 from tiles import SimpleTile, TileManager
 from helper import PageContext
 
+living_room = True
+sleeping_room = False
+
 app = Flask(__name__)
 Bootstrap(app)
 
@@ -26,8 +29,8 @@ def main():
 
 @app.route('/light/')
 def light():
-    living_room = True
-    sleeping_room = False
+    global living_room	
+    global sleeping_room
 
     if("living_room" in request.args):
         living_room = True if request.args["living_room"] == "on" else False
